@@ -11,7 +11,7 @@ public class Main {
         String site = null;
         int n = 0;
         if (k.equals("yes")||(k.equals(""))) {
-             site= "https://twitter.com";
+             site= "https://www.artlebedev.ru";
             n = 9;
         }
         if (k.equals("no")) {
@@ -38,5 +38,6 @@ public class Main {
             }
             System.out.println();
         }
+siteParser.printMap();
     }
 }
