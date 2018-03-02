@@ -1,18 +1,19 @@
 package ru.kpfu.itis.site_parser;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.println("Do you want see standart example? yes/no");
+        System.out.println("Do you want see standard example? yes/no");
         String k = in.nextLine();
         String site = null;
         int n = 0;
         if (k.equals("yes")||(k.equals(""))) {
              site= "https://www.artlebedev.ru";
-            n = 9;
+            n =10;
         }
         if (k.equals("no")) {
             System.out.println("Enter web-site like https://site.net");
@@ -21,7 +22,7 @@ public class Main {
             n = in.nextInt();
         }
         System.out.println("Please wait");
-        SiteParser siteParser = new SiteParser();
+        SiteParser siteParser = new SiteParser(n);
         int[][] mapLinked = siteParser.createMagic(site,n);
         String decorLine="  | ";
         String decorLine2="---";
@@ -39,5 +40,7 @@ public class Main {
             System.out.println();
         }
 siteParser.printMap();
+        HashMap<String, Double> result = siteParser.getPageRank(siteParser.getLinkList(),n,mapLinked,null);
+        result.forEach((key,v)-> System.out.println(key+"  "+v+";  "));
     }
 }
